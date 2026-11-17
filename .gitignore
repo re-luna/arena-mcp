@@ -1,0 +1,22 @@
+# Python environment and interpreter caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Editor
+.vscode/
+.idea/
+
+# Arena artifacts and local models
+*.doe
+*.db
+*.sqlite
+*.sqlite3
+~$*
+
+# Local output
+*.json.out
+*_outputs/

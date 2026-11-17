@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jofongang/arena-mcp/blob/main/schemas/arena-report.schema.json",
+  "title": "Arena combined audit and extraction report",
+  "description": "Stable envelope for the combined report. Nested IR and audit payloads retain their own schema versions.",
+  "type": "object",
+  "required": [
+    "report_schema_version",
+    "generated_at",
+    "source",
+    "completeness",
+    "ir",
+    "audit"
+  ],
+  "properties": {
+    "report_schema_version": {
+      "const": "1.0.0"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "$ref": "#/$defs/source"
+    },
+    "completeness": {
+      "type": "object",
+      "required": [
+        "module_count",
+        "total_modules",
+        "modules_truncated",
+        "warnings",
+        "translation_readiness"
+      ],
+      "properties": {
+        "module_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "total_modules": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modules_truncated": {
+          "type": "boolean"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "translation_readiness": {
+          "enum": ["ready_for_mapping", "review_required"]
+        }
+      },
+      "additionalProperties": true
+    },
+    "ir": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "extracted_at",
+        "source",
+        "arena",
+        "model",
+        "run_configuration",
+        "modules",
+        "connections",
+        "compatibility",
+        "warnings"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "0.3.0"
+        },
+        "extracted_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "arena": {
+          "type": "object"
+        },
+        "model": {
+          "type": "object"
+        },
+        "run_configuration": {
+          "type": "object"
+        },
+        "modules": {
+          "type": "array"
+        },
+        "connections": {
+          "type": "array"
+        },
+        "compatibility": {
+          "type": "object"
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "audit": {
+      "type": "object",
+      "required": [
+        "audit_schema_version",
+        "ir_schema_version",
+        "audited_at",
+        "source",
+        "inventory",
+        "coverage_report"
+      ],
+      "properties": {
+        "audit_schema_version": {
+          "const": "2.0.0"
+        },
+        "ir_schema_version": {
+          "const": "0.3.0"
+        },
+        "audited_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "inventory": {
+          "type": "object"
+        },
+        "coverage_report": {
+          "type": "object",
+          "required": ["translation_readiness"],
+          "properties": {
+            "translation_readiness": {
+              "enum": ["ready_for_mapping", "review_required"]
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "source": {
+      "type": "object",
+      "required": ["path", "read_only"],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "read_only": {
+          "const": true
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

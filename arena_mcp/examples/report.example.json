@@ -1,0 +1,45 @@
+{
+  "report_schema_version": "1.0.0",
+  "generated_at": "2026-01-01T00:00:00+00:00",
+  "source": {
+    "path": "C:\\Arena\\Models\\Example.doe",
+    "read_only": true
+  },
+  "completeness": {
+    "module_count": 0,
+    "total_modules": 0,
+    "modules_truncated": false,
+    "warnings": [],
+    "translation_readiness": "ready_for_mapping"
+  },
+  "ir": {
+    "schema_version": "0.3.0",
+    "extracted_at": "2026-01-01T00:00:00+00:00",
+    "source": {
+      "path": "C:\\Arena\\Models\\Example.doe",
+      "read_only": true
+    },
+    "arena": {
+      "version": "example"
+    },
+    "model": {},
+    "run_configuration": {},
+    "modules": [],
+    "connections": [],
+    "compatibility": {},
+    "warnings": []
+  },
+  "audit": {
+    "audit_schema_version": "2.0.0",
+    "ir_schema_version": "0.3.0",
+    "audited_at": "2026-01-01T00:00:00+00:00",
+    "source": {
+      "path": "C:\\Arena\\Models\\Example.doe",
+      "read_only": true
+    },
+    "inventory": {},
+    "coverage_report": {
+      "translation_readiness": "ready_for_mapping"
+    }
+  }
+}
